@@ -4,15 +4,26 @@ const toys = await fetch('data/toys.json').then((response) => response.json());
 
 // These are the 5 quiz questions shown in the game.
 // Each question has the correct toy name and the matching image.
+// array of objects
 const quizQuestions = [
-  { answer: 'Coo', image: toys[16].image }, { answer: 'Floppy', image: toys[26].image }, { answer: 'Malta Owl', image: toys[35].image }, { answer: 'Scoop', image: toys[57].image }, { answer: 'Wedges', image: toys[68].image }
+  { answer: 'Coo', image: toys[16].image }, 
+  { answer: 'Floppy', image: toys[26].image }, 
+  { answer: 'Malta Owl', image: toys[35].image }, 
+  { answer: 'Scoop', image: toys[57].image }, 
+  { answer: 'Wedges', image: toys[68].image }
 ];
 
 // Keep track of the quiz state and puzzle state.
 // These variables store the current order, score, active toy, and puzzle layout.
-let quizOrder = [], quizIndex = 0, score = 0, puzzleToy = null, puzzleState = [], puzzleMoves = 0;
+let quizOrder = [], 
+quizIndex = 0, 
+score = 0, 
+puzzleToy = null, 
+puzzleState = [], 
+puzzleMoves = 0;
 
 // Small helper: it finds one element in the page quickly.
+// used to hide show HTML elements 
 const $ = (selector) => document.querySelector(selector);
 
 // Show one page/view at a time, such as the collection, quiz, or puzzle screens.

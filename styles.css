@@ -1,33 +1,775 @@
+/*
+  Google Fonts import for the app's typography.
+  Linked to: all text styled with the CSS variables --serif and --mono.
+*/
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
 
-:root { --paper: #f4ede3; --ink: #21312b; --muted: #78827b; --line: #d9d0c4; --coral: #e77b60; --mint: #b9d8c8; --yellow: #f2c96d; --blue: #b9c9e2; --serif: 'Fraunces', Georgia, serif; --mono: 'DM Mono', monospace; }
-* { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: #000000; color: var(--ink); }
-body { font-family: var(--mono); }
-button { color: inherit; font: inherit; cursor: pointer; }
-.phone-shell { width: min(100%, 430px); min-height: 100vh; margin: 0 auto; padding: 20px 20px 24px; background: var(--paper); position: relative; overflow: hidden; }
-.topbar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; border-bottom: 1px solid var(--line); font-size: 10px; letter-spacing: .12em; }
-.brand-button { border: 0; background: transparent; padding: 0; display: flex; gap: 8px; align-items: center; font-size: 11px; font-weight: 500; letter-spacing: .13em; }
-.brand-mark { color: var(--coral); font-size: 19px; line-height: 1; }
-.edition { color: var(--muted); }
-.view { display: none; min-height: calc(100vh - 80px); padding-top: 44px; }
-.view.is-active { display: block; }
-.eyebrow { margin: 0 0 15px; color: var(--coral); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
-h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.04em; line-height: .91; margin: 0; }
-h1 { font-size: clamp(53px, 15vw, 76px); }
-h2 { font-size: 50px; }
-em { color: var(--coral); font-style: normal; }
-.intro-copy { max-width: 270px; margin: 25px 0 0; color: #647069; font-size: 12px; line-height: 1.7; }
-.main-options { display: grid; gap: 10px; margin-top: 48px; }
-.option-card { position: relative; min-height: 112px; border: 1px solid var(--ink); padding: 18px; text-align: left; transition: transform .2s ease, box-shadow .2s ease; }
-.option-card:hover { transform: translate(4px, -4px); box-shadow: -4px 4px 0 var(--ink); }
-.collection-option { background: var(--mint); }.quiz-option { background: var(--yellow); }.puzzle-option { background: var(--blue); }
-.option-number { display: block; margin-bottom: 19px; font-size: 10px; }.option-title { font-family: var(--serif); font-size: 29px; }.option-note { display: block; margin-top: 5px; font-size: 9px; letter-spacing: .04em; }.arrow { position: absolute; right: 18px; top: 14px; font-size: 25px; }
-.home-footer { display: flex; justify-content: space-between; margin-top: 40px; color: var(--muted); font-size: 9px; letter-spacing: .1em; }
-.page-heading { margin-bottom: 32px; }.page-heading h2 { font-size: 45px; }.quiz-heading { position: relative; }.question-count { position: absolute; right: 0; top: 0; color: var(--muted); font-size: 10px; }
-.toy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }.toy-card { border: 1px solid var(--line); background: #eee5d9; }.toy-card:nth-child(2n) { margin-top: 27px; }.toy-card img { display: block; width: 100%; aspect-ratio: 1 / 1.08; object-fit: cover; }.toy-caption { padding: 12px; }.toy-name { display: block; font-family: var(--serif); font-size: 19px; }.toy-detail { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; line-height: 1.4; }
-.quiz-card { background: #eadfce; padding: 10px; }.quiz-image-wrap { position: relative; }.quiz-image-wrap img { display: block; width: 100%; aspect-ratio: 1.05 / 1; object-fit: cover; }.image-label { position: absolute; left: 10px; bottom: 10px; padding: 6px 8px; background: var(--paper); font-size: 9px; letter-spacing: .1em; }.quiz-prompt { margin: 18px 2px 10px; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }.answer { border: 1px solid var(--ink); background: transparent; padding: 13px 8px; text-align: left; font-size: 10px; transition: background .15s; }.answer:hover { background: var(--yellow); }.answer.correct { background: var(--mint); }.answer.wrong { background: #efa998; }.answer:disabled { cursor: default; opacity: .8; }.quiz-result { text-align: center; padding: 68px 20px; }.quiz-result strong { display: block; font-family: var(--serif); font-size: 100px; line-height: .8; }.quiz-result small { color: var(--coral); font-family: var(--mono); font-size: 20px; }.quiz-result p:not(.eyebrow) { color: var(--muted); font-size: 11px; margin: 24px 0; }
-.puzzle-choices { display: grid; gap: 10px; }.puzzle-choice { display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 14px; padding: 8px; border: 1px solid var(--line); background: #ebe2d6; text-align: left; }.puzzle-choice img { width: 76px; height: 58px; object-fit: cover; }.puzzle-choice strong { font-family: var(--serif); font-size: 21px; }.puzzle-choice span { display: block; color: var(--muted); font-size: 9px; margin-top: 4px; }.puzzle-choice > span:last-child { color: var(--coral); font-size: 22px; }.puzzle-stage-top { display: flex; justify-content: space-between; align-items: center; font-size: 10px; }.back-link { border: 0; background: none; padding: 0; text-decoration: underline; text-underline-offset: 3px; }.puzzle-instruction { color: var(--muted); font-size: 11px; line-height: 1.5; }.puzzle-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: var(--ink); }.puzzle-piece { border: 0; aspect-ratio: 1; background-size: 300% 300%; background-color: #89958c; filter: saturate(.75); transition: filter .2s, transform .2s; }.puzzle-piece:hover:not(:disabled) { filter: saturate(1); transform: scale(.96); }.puzzle-piece.is-empty { background: #89958c; cursor: default; }
-.text-button { border: 0; border-bottom: 1px solid var(--ink); background: none; padding: 4px 0; margin-top: 20px; font-size: 10px; }.toast { position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 80px); padding: 11px 14px; background: var(--ink); color: var(--paper); font-size: 10px; opacity: 0; transition: all .25s ease; z-index: 4; }.toast.show { transform: translate(-50%, 0); opacity: 1; }
-.reveal { animation: lift .65s both; }.reveal:nth-child(2) { animation-delay: .08s; }.reveal:nth-child(3) { animation-delay: .16s; }.reveal:nth-child(4) { animation-delay: .24s; } @keyframes lift { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@media (min-width: 431px) { .phone-shell { min-height: 844px; margin: 28px auto; box-shadow: 0 16px 60px rgba(34, 42, 37, .16); } }
+/*
+  Design tokens for the whole interface.
+  Linked to: selectors like .phone-shell, .eyebrow, .option-card, .toy-card, and .toast
+  because they reference colors from these variables throughout the stylesheet.
+*/
+:root {
+  --paper: #f4ede3; /* Main warm background used for panels and cards. */
+  --ink: #21312b; /* Main dark text and border color. */
+  --muted: #78827b; /* Secondary text and supporting labels. */
+  --line: #d9d0c4; /* Divider/border color. */
+  --coral: #e77b60; /* Accent color for emphasis and highlights. */
+  --mint: #b9d8c8; /* Positive/soft green card background. */
+  --yellow: #f2c96d; /* Warm yellow card background. */
+  --blue: #b9c9e2; /* Cool blue card background. */
+  --serif: 'Fraunces', Georgia, serif; /* Display font for headings and titles. */
+  --mono: 'DM Mono', monospace; /* Monospace font for UI labels and body text. */
+}
+
+/*
+  Global reset for all elements.
+  Linked to: every element on the page, because the universal selector applies to all tags.
+*/
+* {
+  box-sizing: border-box; /* Ensures padding and border are included in an element's declared size. */
+}
+
+/*
+  Base page styling.
+  Linked to: the <html> and <body> elements, which set the page background and default text color.
+*/
+html, body {
+  margin: 0; /* Removes default browser spacing around the page. */
+  min-height: 100%; /* Makes the page at least as tall as the viewport. */
+  background: #000000; /* Creates a dark outer frame behind the app shell. */
+  color: var(--ink); /* Uses the app's main text color. */
+}
+
+/*
+  Default font for the page body.
+  Linked to: the <body> element, which holds most visible text.
+*/
+body {
+  font-family: var(--mono); /* Applies the mono typeface to standard text content. */
+}
+
+/*
+  Shared button styling.
+  Linked to: all <button> elements such as nav actions, answers, and puzzle choices.
+*/
+button {
+  color: inherit; /* Keeps button text consistent with surrounding text color. */
+  font: inherit; /* Keeps button text sizing and family aligned with the app theme. */
+  cursor: pointer; /* Shows a pointer cursor on interactive button controls. */
+}
+
+/*
+  App shell wrapper.
+  Linked to: the main container element that holds the whole phone mock-up UI.
+*/
+.phone-shell {
+  width: min(100%, 430px); /* Limits the shell width to 430px on larger screens while staying responsive. */
+  min-height: 100vh; /* Keeps the shell tall enough to fill the viewport height. */
+  margin: 0 auto; /* Centers the shell horizontally on wider screens. */
+  padding: 20px 20px 24px; /* Creates spacing inside the app shell. */
+  background: var(--paper); /* Uses the warm paper color as the surface background. */
+  position: relative; /* Lets absolutely positioned children align relative to this shell. */
+  overflow: hidden; /* Prevents content from spilling outside the device frame. */
+}
+
+/*
+  Top navigation bar.
+  Linked to: the .topbar section at the top of the app.
+*/
+.topbar {
+  display: flex; /* Arranges children horizontally in a row. */
+  justify-content: space-between; /* Pushes left and right items apart. */
+  align-items: center; /* Vertically centers content. */
+  padding-bottom: 22px; /* Adds space below the nav row. */
+  border-bottom: 1px solid var(--line); /* Adds a subtle divider under the nav. */
+  font-size: 10px; /* Keeps labels compact. */
+  letter-spacing: .12em; /* Spreads letters for a small uppercase look. */
+}
+
+/*
+  Brand area button.
+  Linked to: the brand trigger button in the top navigation.
+*/
+.brand-button {
+  border: 0; /* Removes default button border. */
+  background: transparent; /* Keeps the button visually seamless with the background. */
+  padding: 0; /* Removes default button padding. */
+  display: flex; /* Uses flex layout for icon/text alignment. */
+  gap: 8px; /* Adds spacing between the brand mark and text. */
+  align-items: center; /* Centers the icon and label vertically. */
+  font-size: 11px; /* Sets the brand text size. */
+  font-weight: 500; /* Gives the brand text medium emphasis. */
+  letter-spacing: .13em; /* Adds a slightly wider letter spacing for the label. */
+}
+
+/*
+  Brand mark icon.
+  Linked to: the decorative brand symbol before the text label.
+*/
+.brand-mark {
+  color: var(--coral); /* Uses the coral accent color for the brand mark. */
+  font-size: 19px; /* Sets the mark size. */
+  line-height: 1; /* Keeps the icon tightly packed. */
+}
+
+/*
+  Edition text next to the brand.
+  Linked to: the .edition label positioned beside the title.
+*/
+.edition {
+  color: var(--muted); /* Uses the secondary muted tone for the supporting edition label. */
+}
+
+/*
+  Screen view container.
+  Linked to: each page/view section that is shown or hidden by JS.
+*/
+.view {
+  display: none; /* Hides all non-active views by default. */
+  min-height: calc(100vh - 80px); /* Ensures each view fills enough space beneath the top bar. */
+  padding-top: 44px; /* Creates space below the top bar before content. */
+}
+
+/*
+  Active view state.
+  Linked to: a view that has the class .is-active applied, usually by the app logic.
+*/
+.view.is-active {
+  display: block; /* Shows the active screen while hiding others. */
+}
+
+/*
+  Eyebrow labels above headings.
+  Linked to: small uppercase headings like category labels or section labels.
+*/
+.eyebrow {
+  margin: 0 0 15px; /* Adds spacing below the label. */
+  color: var(--coral); /* Uses the accent coral color. */
+  font-size: 10px; /* Keeps it small and compact. */
+  letter-spacing: .15em; /* Widens letter spacing for a stamped, uppercase feel. */
+  text-transform: uppercase; /* Forces the label to uppercase text. */
+}
+
+/*
+  Shared heading styles.
+  Linked to: the h1 and h2 tags across the app.
+*/
+h1, h2 {
+  font-family: var(--serif); /* Uses the high-contrast serif heading font. */
+  font-weight: 600; /* Sets the heading weight to semi-bold. */
+  letter-spacing: -.04em; /* Tighter tracking for a compact editorial look. */
+  line-height: .91; /* Reduces line-height to keep headings compact. */
+  margin: 0; /* Removes default browser margins from headings. */
+}
+
+/*
+  Main homepage title.
+  Linked to: the primary h1 heading on the home screen.
+*/
+h1 {
+  font-size: clamp(53px, 15vw, 76px); /* Scales the title responsively between a minimum and maximum size. */
+}
+
+/*
+  Secondary section heading.
+  Linked to: the top-level h2 heading used on subpages like collections and quizzes.
+*/
+h2 {
+  font-size: 50px; /* Provides a large but compact page heading size. */
+}
+
+/*
+  Emphasized inline text.
+  Linked to: <em> elements used for highlighted phrases such as important words.
+*/
+em {
+  color: var(--coral); /* Makes emphasized text stand out in accent coral. */
+  font-style: normal; /* Keeps the emphasis as a solid text color rather than italic styling. */
+}
+
+/*
+  Intro paragraph copy.
+  Linked to: the descriptive intro text on the landing page.
+*/
+.intro-copy {
+  max-width: 270px; /* Restricts line length to improve readability. */
+  margin: 25px 0 0; /* Adds top spacing before the paragraph. */
+  color: #647069; /* Uses a muted green-gray tone for supporting copy. */
+  font-size: 12px; /* Keeps the intro copy slightly smaller than headings. */
+  line-height: 1.7; /* Increases readability with generous vertical space. */
+}
+
+/*
+  Container for homepage option cards.
+  Linked to: the grid of main navigation cards on the home screen.
+*/
+.main-options {
+  display: grid; /* Makes the cards arrange in a grid. */
+  gap: 10px; /* Space between cards in the collection. */
+  margin-top: 48px; /* Pushes the card grid down below the intro copy. */
+}
+
+/*
+  Individual main option card.
+  Linked to: each selection card in the home menu.
+*/
+.option-card {
+  position: relative; /* Positions the arrow icon relative to the card itself. */
+  min-height: 112px; /* Keeps each card a consistent height. */
+  border: 1px solid var(--ink); /* Gives each card a dark outlined frame. */
+  padding: 18px; /* Creates inner padding for title and note content. */
+  text-align: left; /* Keeps text aligned to the left inside each card. */
+  transition: transform .2s ease, box-shadow .2s ease; /* Smoothly animates hover movement and shadow. */
+}
+
+/*
+  Hover state for the option card.
+  Linked to: .option-card when the mouse is over it.
+*/
+.option-card:hover {
+  transform: translate(4px, -4px); /* Nudges the card diagonally upward to produce a hover lift. */
+  box-shadow: -4px 4px 0 var(--ink); /* Creates a shadow offset to the left and downward for depth. */
+}
+
+/*
+  Card color variants.
+  Linked to: .collection-option, .quiz-option, and .puzzle-option, which each use a different background color.
+*/
+.collection-option { background: var(--mint); }
+.quiz-option { background: var(--yellow); }
+.puzzle-option { background: var(--blue); }
+
+/*
+  Number label inside each option card.
+  Linked to: the small numeric badge that appears before the option title.
+*/
+.option-number {
+  display: block; /* Makes the number behave like a block-level text element. */
+  margin-bottom: 19px; /* Adds space below the number before the title. */
+  font-size: 10px; /* Keeps it in a compact micro-label style. */
+}
+
+/*
+  Title text inside each option card.
+  Linked to: the .option-title label within the main menu cards.
+*/
+.option-title {
+  font-family: var(--serif); /* Uses the display serif font for emphasis. */
+  font-size: 29px; /* Sets the card title size. */
+}
+
+/*
+  Supporting note under the title.
+  Linked to: the .option-note label that describes the option.
+*/
+.option-note {
+  display: block; /* Forces the note to take its own horizontal line. */
+  margin-top: 5px; /* Adds spacing above the tertiary text. */
+  font-size: 9px; /* Keeps the note compact. */
+  letter-spacing: .04em; /* Slightly spreads the note characters for readability. */
+}
+
+/*
+  Arrow icon inside the option card.
+  Linked to: the decorative arrow positioned in the corner of each card.
+*/
+.arrow {
+  position: absolute; /* Anchors the arrow relative to the card container. */
+  right: 18px; /* Positions the arrow near the right edge. */
+  top: 14px; /* Positions the arrow near the top edge. */
+  font-size: 25px; /* Sets arrow size. */
+}
+
+/*
+  Footer of the home screen.
+  Linked to: the footer text below the main menu.
+*/
+.home-footer {
+  display: flex; /* Uses flexbox for side-by-side footer items. */
+  justify-content: space-between; /* Splits footer content to left and right edges. */
+  margin-top: 40px; /* Adds space above the footer. */
+  color: var(--muted); /* Uses muted text for secondary labels. */
+  font-size: 9px; /* Keeps the footer compact. */
+  letter-spacing: .1em; /* Adds a slight spacing to the footer labels. */
+}
+
+/*
+  Heading block for subpages.
+  Linked to: .page-heading wrappers on other screens.
+*/
+.page-heading {
+  margin-bottom: 32px; /* Pushes content away from the heading area. */
+}
+
+/*
+  Page-heading h2 override.
+  Linked to: h2 elements nested inside .page-heading.
+*/
+.page-heading h2 {
+  font-size: 45px; /* Makes the subpage title a little smaller than the main home heading. */
+}
+
+/*
+  Quiz heading wrapper.
+  Linked to: the area that contains the quiz title and question count.
+*/
+.quiz-heading {
+  position: relative; /* Positions the question count absolute within this container. */
+}
+
+/*
+  Question counter in the quiz header.
+  Linked to: the .question-count element that marks the active question number.
+*/
+.question-count {
+  position: absolute; /* Positions the counter relative to the quiz heading container. */
+  right: 0; /* Aligns the counter to the right side. */
+  top: 0; /* Aligns it to the top edge of the heading block. */
+  color: var(--muted); /* Uses the muted text tone. */
+  font-size: 10px; /* Keeps the counter compact. */
+}
+
+/*
+  Toy collection grid.
+  Linked to: the gallery of toy cards displayed on the collection page.
+*/
+.toy-grid {
+  display: grid; /* Arranges toy cards in a two-column grid. */
+  grid-template-columns: 1fr 1fr; /* Splits each row into two equal columns. */
+  gap: 10px; /* Adds spacing between cards. */
+}
+
+/*
+  Individual toy card.
+  Linked to: each product tile in the collection gallery.
+*/
+.toy-card {
+  border: 1px solid var(--line); /* Uses a subtle divider border. */
+  background: #eee5d9; /* Gives each toy card a light warm background. */
+}
+
+/*
+  Alternate alignment for every second toy card.
+  Linked to: .toy-card:nth-child(2n), which shifts every even card downward for a staggered layout.
+*/
+.toy-card:nth-child(2n) {
+  margin-top: 27px; /* Offsets every second card downward to create a staggered gallery pattern. */
+}
+
+/*
+  Toy image inside a card.
+  Linked to: the <img> element inside .toy-card.
+*/
+.toy-card img {
+  display: block; /* Removes inline spacing below the image. */
+  width: 100%; /* Makes the image fill the card width. */
+  aspect-ratio: 1 / 1.08; /* Keeps the card image dimensions consistent with the toy art. */
+  object-fit: cover; /* Crops the image while preserving aspect ratio. */
+}
+
+/*
+  Caption area under each toy image.
+  Linked to: .toy-caption, which contains the toy name and detail.
+*/
+.toy-caption {
+  padding: 12px; /* Adds internal spacing inside the caption area. */
+}
+
+/*
+  Name of the toy.
+  Linked to: the .toy-name text label in each toy card.
+*/
+.toy-name {
+  display: block; /* Forces the toy name to sit on its own line. */
+  font-family: var(--serif); /* Uses the serif font to emphasize the toy title. */
+  font-size: 19px; /* Sets the toy name to a readable medium size. */
+}
+
+/*
+  Secondary descriptive text under each toy.
+  Linked to: the .toy-detail metadata line for each toy entry.
+*/
+.toy-detail {
+  display: block; /* Makes the detail line its own block. */
+  margin-top: 5px; /* Adds spacing above the detail text. */
+  color: var(--muted); /* Uses the muted tone for detail information. */
+  font-size: 9px; /* Keeps the description smaller and compact. */
+  line-height: 1.4; /* Provides readable spacing between lines of text. */
+}
+
+/*
+  Quiz card container.
+  Linked to: the question card shown during quiz rounds.
+*/
+.quiz-card {
+  background: #eadfce; /* Gives the quiz card a warm parchment background. */
+  padding: 10px; /* Adds a small frame around the quiz content. */
+}
+
+/*
+  Quiz image wrapper.
+  Linked to: the image portion of the question card.
+*/
+.quiz-image-wrap {
+  position: relative; /* Allows the image label to sit absolutely over the image. */
+}
+
+/*
+  Quiz image.
+  Linked to: the <img> inside .quiz-image-wrap.
+*/
+.quiz-image-wrap img {
+  display: block; /* Removes spacing beneath the image. */
+  width: 100%; /* Makes the image fill the width of the card. */
+  aspect-ratio: 1.05 / 1; /* Keeps the image aspect consistent with the quiz card. */
+  object-fit: cover; /* Ensures the picture crops without distortion. */
+}
+
+/*
+  Image label overlay.
+  Linked to: the .image-label badge placed on the question image.
+*/
+.image-label {
+  position: absolute; /* Positions the label over the image. */
+  left: 10px; /* Offsets the label from the left edge. */
+  bottom: 10px; /* Positions the label at the bottom of the image. */
+  padding: 6px 8px; /* Adds padding within the overlay label. */
+  background: var(--paper); /* Matches the app background color for the label chip. */
+  font-size: 9px; /* Keeps the label compact. */
+  letter-spacing: .1em; /* Adds narrow letter spacing for small uppercase text. */
+}
+
+/*
+  Prompt line above answer choices.
+  Linked to: the .quiz-prompt text telling the user what to do.
+*/
+.quiz-prompt {
+  margin: 18px 2px 10px; /* Spacing above and below the prompt. */
+  font-size: 10px; /* Keeps the prompt subtle and compact. */
+  text-transform: uppercase; /* Turns the prompt into uppercase labels. */
+  letter-spacing: .1em; /* Adds separating letter spacing. */
+}
+
+/*
+  Grid of quiz answers.
+  Linked to: the answer button container in the quiz card.
+*/
+.answers {
+  display: grid; /* Creates a two-column answer grid. */
+  grid-template-columns: 1fr 1fr; /* Splits the answers into equal columns. */
+  gap: 7px; /* Adds small spacing between answer tiles. */
+}
+
+/*
+  Individual quiz answer control.
+  Linked to: each .answer button choice.
+*/
+.answer {
+  border: 1px solid var(--ink); /* Gives each answer a dark border. */
+  background: transparent; /* Keeps the base state clean and subtle. */
+  padding: 13px 8px; /* Adds internal padding to the answer tile. */
+  text-align: left; /* Keeps answer text aligned to the left. */
+  font-size: 10px; /* Keeps the answer text small and readable. */
+  transition: background .15s; /* Smoothly transitions the answer background on hover and state changes. */
+}
+
+/*
+  Hover state for answer buttons.
+  Linked to: .answer when hovered.
+*/
+.answer:hover {
+  background: var(--yellow); /* Highlights the answer with the warm yellow card tone. */
+}
+
+/*
+  Correct answer state.
+  Linked to: .answer.correct after the user selects the right option.
+*/
+.answer.correct {
+  background: var(--mint); /* Gives the correct answer a green success tone. */
+}
+
+/*
+  Wrong answer state.
+  Linked to: .answer.wrong after the user selects an incorrect option.
+*/
+.answer.wrong {
+  background: #efa998; /* Turns the wrong answer coral-red to signal an incorrect selection. */
+}
+
+/*
+  Disabled answer state.
+  Linked to: answer buttons after they have been selected to prevent re-clicking.
+*/
+.answer:disabled {
+  cursor: default; /* Keeps the cursor as the default arrow when an answer is locked. */
+  opacity: .8; /* Slightly reduces contrast to show the answer is inactive. */
+}
+
+/*
+  Quiz result panel after scoring.
+  Linked to: the final score card that appears after quiz completion.
+*/
+.quiz-result {
+  text-align: center; /* Centers the final score and summary text. */
+  padding: 68px 20px; /* Adds generous space inside the result card. */
+}
+
+/*
+  Large score number in the result panel.
+  Linked to: the strong element inside .quiz-result.
+*/
+.quiz-result strong {
+  display: block; /* Forces the score to its own line. */
+  font-family: var(--serif); /* Uses the serif display font for a large score count. */
+  font-size: 100px; /* Makes the score extremely large and prominent. */
+  line-height: .8; /* Keeps the large number compact and visually balanced. */
+}
+
+/*
+  Small score label under the result number.
+  Linked to: the small element inside .quiz-result.
+*/
+.quiz-result small {
+  color: var(--coral); /* Uses the accent coral color for the label. */
+  font-family: var(--mono); /* Keeps the label in the mono font. */
+  font-size: 20px; /* Gives the label a larger size than other micro labels. */
+}
+
+/*
+  Summary paragraph in the result panel.
+  Linked to: any p element inside .quiz-result except those with the .eyebrow class.
+*/
+.quiz-result p:not(.eyebrow) {
+  color: var(--muted); /* Applies muted text to the summary copy. */
+  font-size: 11px; /* Keeps the paragraph readable but compact. */
+  margin: 24px 0; /* Adds vertical spacing around the paragraph. */
+}
+
+/*
+  Puzzle choices list.
+  Linked to: the choices container for puzzle answers.
+*/
+.puzzle-choices {
+  display: grid; /* Arranges the puzzle choices in a vertical stack. */
+  gap: 10px; /* Adds space between each option entry. */
+}
+
+/*
+  Individual puzzle choice row.
+  Linked to: each .puzzle-choice entry in the puzzle answer list.
+*/
+.puzzle-choice {
+  display: grid; /* Creates columns for image, content, and arrow indicator. */
+  grid-template-columns: 76px 1fr auto; /* Sets a fixed image column, flexible middle section, and trailing icon column. */
+  align-items: center; /* Aligns all cells vertically. */
+  gap: 14px; /* Adds space between the image, text, and arrow. */
+  padding: 8px; /* Adds inner spacing around the puzzle option. */
+  border: 1px solid var(--line); /* Uses a soft divider border. */
+  background: #ebe2d6; /* Gives the puzzle choice a warm neutral panel tone. */
+  text-align: left; /* Keeps the content aligned left. */
+}
+
+/*
+  Puzzle choice thumbnail.
+  Linked to: the <img> inside each .puzzle-choice row.
+*/
+.puzzle-choice img {
+  width: 76px; /* Sizes the thumbnail to a fixed width. */
+  height: 58px; /* Sets a compact height for the image. */
+  object-fit: cover; /* Keeps the image scaled and cropped consistently. */
+}
+
+/*
+  Puzzle choice title.
+  Linked to: the strong text inside the choice row.
+*/
+.puzzle-choice strong {
+  font-family: var(--serif); /* Uses the display serif for the puzzle title. */
+  font-size: 21px; /* Sets the title to a readable medium large size. */
+}
+
+/*
+  Subtext under the puzzle choice title.
+  Linked to: the span inside each puzzle choice row.
+*/
+.puzzle-choice span {
+  display: block; /* Makes the subtext appear on its own line. */
+  color: var(--muted); /* Uses the muted tone for additional detail. */
+  font-size: 9px; /* Keeps the supporting note small. */
+  margin-top: 4px; /* Adds spacing above the note. */
+}
+
+/*
+  Selection arrow at the end of each puzzle choice.
+  Linked to: the last span in the .puzzle-choice row.
+*/
+.puzzle-choice > span:last-child {
+  color: var(--coral); /* Uses the coral accent as the score or action indicator color. */
+  font-size: 22px; /* Makes the arrow or indicator clearly visible. */
+}
+
+/*
+  Top bar of the puzzle stage.
+  Linked to: the header line above the puzzle board.
+*/
+.puzzle-stage-top {
+  display: flex; /* Places the stage label and back link side by side. */
+  justify-content: space-between; /* Pushes the elements to opposite sides. */
+  align-items: center; /* Vertically aligns both items. */
+  font-size: 10px; /* Keeps the stage text compact. */
+}
+
+/*
+  Back navigation link.
+  Linked to: the .back-link button used to return to a previous screen.
+*/
+.back-link {
+  border: 0; /* Removes the default button outline/border. */
+  background: none; /* Makes the button blend into the background. */
+  padding: 0; /* Removes internal spacing. */
+  text-decoration: underline; /* Adds a clear visual link treatment. */
+  text-underline-offset: 3px; /* Positions the underline slightly below the text. */
+}
+
+/*
+  Instruction text around the puzzle board.
+  Linked to: the .puzzle-instruction paragraph under the puzzle stage heading.
+*/
+.puzzle-instruction {
+  color: var(--muted); /* Uses muted gray text for instruction copy. */
+  font-size: 11px; /* Keeps the instruction text readable but compact. */
+  line-height: 1.5; /* Improves the spacing between lines of instruction text. */
+}
+
+/*
+  Puzzle board grid.
+  Linked to: the puzzle grid where pieces are arranged.
+*/
+.puzzle-board {
+  display: grid; /* Creates a three-column grid for puzzle pieces. */
+  grid-template-columns: repeat(3, 1fr); /* Divides the board into three equal-width columns. */
+  gap: 4px; /* Adds tiny gaps between puzzle tiles. */
+  padding: 4px; /* Adds a small border-like inner space around the board. */
+  background: var(--ink); /* Gives the board a strong dark frame to contrast with the tiles. */
+}
+
+/*
+  Individual puzzle piece.
+  Linked to: each tile in the puzzle board.
+*/
+.puzzle-piece {
+  border: 0; /* Removes default border styling from tile buttons. */
+  aspect-ratio: 1; /* Keeps every tile square. */
+  background-size: 300% 300%; /* Expands the background image so each piece displays a segment of the full art. */
+  background-color: #89958c; /* Sets a fallback background color for unfilled or unloaded tiles. */
+  filter: saturate(.75); /* Slightly desaturates the tile to match the muted toy aesthetic. */
+  transition: filter .2s, transform .2s; /* Animates hover and state changes smoothly. */
+}
+
+/*
+  Hover effect for puzzle pieces.
+  Linked to: puzzle tiles that are enabled and not empty.
+*/
+.puzzle-piece:hover:not(:disabled) {
+  filter: saturate(1); /* Restores image intensity on hover. */
+  transform: scale(.96); /* Slightly shrinks the tile on hover to give feedback. */
+}
+
+/*
+  Empty slot style.
+  Linked to: puzzle tiles marked with the .is-empty class, which represent blank spaces.
+*/
+.puzzle-piece.is-empty {
+  background: #89958c; /* Uses the neutral gray for empty tile slots. */
+  cursor: default; /* Prevents the empty slot from looking clickable. */
+}
+
+/*
+  Text-only button style.
+  Linked to: .text-button elements used as lower-emphasis actions.
+*/
+.text-button {
+  border: 0; /* Removes the default button border. */
+  border-bottom: 1px solid var(--ink); /* Adds a subtle underline line beneath the button text. */
+  background: none; /* Keeps the button background transparent. */
+  padding: 4px 0; /* Adds a compact vertical padding while keeping the underline visible. */
+  margin-top: 20px; /* Adds space above the text button. */
+  font-size: 10px; /* Keeps the action text small and compact. */
+}
+
+/*
+  Toast pop-up notification.
+  Linked to: the .toast element that appears temporarily for feedback messages.
+*/
+.toast {
+  position: fixed; /* Fixes the toast relative to the viewport. */
+  left: 50%; /* Centers the toast horizontally. */
+  bottom: 20px; /* Keeps the toast above the bottom edge. */
+  transform: translate(-50%, 80px); /* Starts offscreen below the viewport. */
+  padding: 11px 14px; /* Adds internal spacing. */
+  background: var(--ink); /* Uses dark ink color for the toast background. */
+  color: var(--paper); /* Uses the light paper color for readable text. */
+  font-size: 10px; /* Keeps the toast text compact. */
+  opacity: 0; /* Starts hidden until the .show class is applied. */
+  transition: all .25s ease; /* Animates toast show/hide transitions. */
+  z-index: 4; /* Ensures the toast stays above content layers. */
+}
+
+/*
+  Visible toast state.
+  Linked to: .toast.show, which is applied when the notification appears.
+*/
+.toast.show {
+  transform: translate(-50%, 0); /* Moves the toast back into view. */
+  opacity: 1; /* Fully reveals the toast. */
+}
+
+/*
+  Reveal animation used for sequential elements.
+  Linked to: elements with the .reveal class and their nth-child variants.
+*/
+.reveal {
+  animation: lift .65s both; /* Runs the lift animation once when the element is revealed. */
+}
+
+.reveal:nth-child(2) {
+  animation-delay: .08s; /* Staggers the second reveal slightly after the first. */
+}
+
+.reveal:nth-child(3) {
+  animation-delay: .16s; /* Staggers the third reveal further down. */
+}
+
+.reveal:nth-child(4) {
+  animation-delay: .24s; /* Staggers the fourth reveal for a cascading effect. */
+}
+
+/*
+  Keyframe for the reveal animation.
+  Linked to: the .reveal class via the @keyframes lift animation.
+*/
+@keyframes lift {
+  from {
+    opacity: 0; /* Starts completely transparent. */
+    transform: translateY(10px); /* Starts slightly lower and moves upward. */
+  }
+  to {
+    opacity: 1; /* Ends fully visible. */
+    transform: translateY(0); /* Settles back at the original vertical position. */
+  }
+}
+
+/*
+  Desktop / larger phone layout adjustment.
+  Linked to: the .phone-shell element when the viewport is at least 431px wide.
+*/
+@media (min-width: 431px) {
+  .phone-shell {
+    min-height: 844px; /* Gives the shell a taller, phone-like fixed height on larger screens. */
+    margin: 28px auto; /* Adds vertical space and centers the shell. */
+    box-shadow: 0 16px 60px rgba(34, 42, 37, .16); /* Adds a soft elevated shadow to create depth. */
+  }
+}
+
